@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
-import Button from '@mui/material/Button'
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 import dayjs from 'dayjs';
+import DeleteAlert from "./DeleteTrainingAlert";
 
 
 function TrainingList() {
@@ -18,23 +18,45 @@ function TrainingList() {
 
     useEffect(fetchData, []);
 
+    const deleteTraining = href => {
+        const options = {
+            method: 'delete'
+        }
+        fetch(href, options)
+        .then(response => fetchData())
+        .catch(error => console.error(error))
+    }
+
+    const dateFormatter = params => {
+        return(dayjs(params.data.date).format('DD.MM.YYYY HH:mm'))
+    }
+
+    const nameFormatter = params => {
+        const name = params.data.customer.firstname + " " + params.data.customer.lastname
+        return(name)
+    }
+
     const columns = [
         { field: "date",
           valueFormatter: dateFormatter },
         { field: "duration" },
         { field: "activity" },
         { field: "customer",
-          valueFormatter: nameFormatter }
+          valueFormatter: nameFormatter },
+        {
+            field: "links[1].href",
+            headerName: "",
+            sortable: false,
+            filter: false,
+            floatingFilter: false,
+            width: 120,
+            cellRenderer: params => {
+                return(
+                    <DeleteAlert training={params.data} deleteTraining={deleteTraining} />
+                )
+            }
+        }
     ]
-
-    function dateFormatter(params) {
-        return(dayjs(params.data.date).format('DD.MM.YYYY HH:mm'))
-    }
-
-    function nameFormatter(params) {
-        const name = params.data.customer.firstname + " " + params.data.customer.lastname
-        return(name)
-    }
 
     return (
         <div>

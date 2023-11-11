@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
-import Button from '@mui/material/Button'
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 import AddCustomer from "./AddCustomer";
@@ -108,7 +107,7 @@ function CustomerList() {
             sortable: false,
             filter: false,
             floatingFilter: false,
-            width: 100,
+            width: 120,
             cellRenderer: params => {
                 return(
                     <DeleteAlert customer={params.data} deleteCustomer={deleteCustomer} />
