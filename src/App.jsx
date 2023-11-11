@@ -1,5 +1,6 @@
 import './App.css';
-import CustomerList from './components/CustomerList'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +10,7 @@ import TabApp from './components/TabApp';
 function App() {
 
   return (
-    <div>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -20,7 +21,7 @@ function App() {
         </AppBar>
       </Box>
       <TabApp />
-    </div>
+    </LocalizationProvider>
   )
 }
 
