@@ -4,6 +4,7 @@ import App from './App.jsx'
 import CustomerList from './components/CustomerList.jsx'
 import TrainingList from './components/TrainingList.jsx'
 import CalendarPage from './components/CalendarPage.jsx'
+import ChartPage from './components/ChartPage.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -15,7 +16,6 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "customers",
         element: <CustomerList />,
         index: true
       },
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "calendar",
         element: <CalendarPage />
+      },
+      {
+        path: "chart",
+        element: <ChartPage />
       }
     ]
   }
