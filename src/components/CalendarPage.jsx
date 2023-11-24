@@ -21,12 +21,10 @@ function CalendarPage() {
         return { 
             id: item.id,
             title: item.activity,
-            start: dayjs(item.date),
-            end: dayjs(item.date).add(item.duration, 'm')
+            start: new Date(item.date),
+            end: dayjs(item.date).add(item.duration, 'm').toDate()
         }
     })
-
-    console.log(events)
 
     const MyCalendar = () => (
         <div>
