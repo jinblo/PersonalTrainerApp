@@ -5,6 +5,7 @@ import CustomerList from './components/CustomerList.jsx'
 import TrainingList from './components/TrainingList.jsx'
 import CalendarPage from './components/CalendarPage.jsx'
 import ChartPage from './components/ChartPage.jsx'
+import Error from './components/Error.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
