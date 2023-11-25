@@ -21,7 +21,7 @@ function CustomerList() {
     ])
 
     const fetchData = () => {
-        fetch('http://traineeapp.azurewebsites.net/api/customers')
+        fetch('https://traineeapp.azurewebsites.net/api/customers')
             .then(response => response.json())
             .then(data => setCustomers(data.content))
             .catch(error => console.error(error))
@@ -36,7 +36,7 @@ function CustomerList() {
             },
             body: JSON.stringify(customer)
         }
-        fetch('http://traineeapp.azurewebsites.net/api/customers', options)
+        fetch('https://traineeapp.azurewebsites.net/api/customers', options)
             .then(response => fetchData())
             .catch(error => console.error(error))
     }
@@ -71,7 +71,7 @@ function CustomerList() {
             },
             body: JSON.stringify(training)
         }
-        fetch('http://traineeapp.azurewebsites.net/api/trainings', options)
+        fetch('https://traineeapp.azurewebsites.net/api/trainings', options)
             .then(response => fetchData())
             .catch(error => console.error(error))
     }
