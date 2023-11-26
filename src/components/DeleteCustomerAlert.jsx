@@ -18,7 +18,8 @@ export default function DeleteAlert(props) {
   };
 
   const handleDelete = () => {
-    props.deleteCustomer(props.customer.links[0].href);
+    const href = (props.customer.links[0].href).replace("http" , "https")
+    props.deleteCustomer(href);
     setOpen(false);
   };
 

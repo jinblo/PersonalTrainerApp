@@ -20,7 +20,7 @@ function CalendarPage() {
     const events = trainings.map((item) => {
         return { 
             id: item.id,
-            title: item.activity,
+            title: item.activity + " / " + item.customer.firstname + " " + item.customer.lastname,
             start: new Date(item.date),
             end: dayjs(item.date).add(item.duration, 'm').toDate()
         }
@@ -33,7 +33,7 @@ function CalendarPage() {
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
-                style={{ height: 500 }}
+                style={{ height: 700 }}
             />
         </div>
     )

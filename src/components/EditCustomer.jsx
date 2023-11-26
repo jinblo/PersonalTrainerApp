@@ -34,7 +34,8 @@ export default function EditCustomer(props) {
     };
 
     const handleSave = () => {
-        props.updateCustomer(customer.links[0].href, customer);
+      const href = (props.customer.links[0].href).replace("http" , "https")
+        props.updateCustomer(href, customer);
         setOpen(false);
     }
   
